@@ -1,0 +1,29 @@
+# Format du fichier Compose
+version: '3.7'
+
+# Liste des conteneurs de notre application
+services:
+
+    # Service de la base de donnée
+    db:
+        image: mongo:latest
+        container_name: mongodb
+        # Redémarre automatiquement le conteneur en cas de redémarrage du serveur
+        restart: always
+        ports:
+            - 27017:80
+
+    app:
+        # Se base sur l'image myapp construit depuis le Dockerfile
+        image: davi30/seed_mongo
+        container_name: seed_mongo
+        restart: always
+        # Mapping du port 8000 sur le port 80
+        ports:
+            - 8000:80
+        # Définit un dépendance entre le service app et db
+        # -> le service db est démarré avec le service app
+        # -> le service app est arrêté avant le service app
+        depends_on:
+            - db
+    
