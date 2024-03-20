@@ -7,7 +7,7 @@ class Grain:
     def is_valid(self):
         valid_origine = ["Vietnam", "Kenya", "Colombie", "Guatemala"]
         valid_arome = ["Floral", "Fruite", "Chocolate", "Epice"]
-        if(self.origine in valid_origine and self.arome in valid_arome and self.annee %5 !=0 and 1 <= self.corps <= 9):
+        if(self.origine in valid_origine and self.arome in valid_arome and self.annee %5 !=0 and self.corps >= 1 and self.corps <= 9):
             return True
         else:
             return False
